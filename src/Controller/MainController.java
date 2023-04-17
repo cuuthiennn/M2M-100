@@ -1,27 +1,23 @@
 package Controller;
 
-import java.util.List;
 import java.util.Scanner;
 
 import Entity.ClassRoom;
 import Entity.Student;
-import Service.ClassRoomService;
-import Service.StudentService;
+import Repository.Repository;
 import Service.ServiceImpl.ClassRoomServiceImpl;
-import Service.ServiceImpl.Repository;
 import Service.ServiceImpl.StudentServiceImpl;
 
 public class MainController {
 	ClassRoom listStudent;
-	StudentService sd_service;
-	ClassRoomService lsd_service;
-	Repository lcr_service;
+	StudentServiceImpl sd_service;
+	ClassRoomServiceImpl lcr_service;
+	Repository repository;
 	Scanner scan = new Scanner(System.in);
+	
 	public MainController() {
 		sd_service = new StudentServiceImpl();
-		lsd_service = new ClassRoomServiceImpl();
-		lcr_service = new Repository();
-			
+		lcr_service = new ClassRoomServiceImpl();
 	}
 	
 	public void cllerInsertClassRoom() {
@@ -52,11 +48,10 @@ public class MainController {
 		String tenLop = scan.nextLine();
 		boolean check_lopexist = lcr_service.findClassRoom(tenLop);
 		if(check_lopexist) {
-			System.out.print("Id: ");
-			Long idStudent = scan.nextLong();
 			System.out.print("Ho va ten: ");
 			String hoTen = scan.nextLine();
-			scan.nextLine();
+			System.out.print("Id: ");
+			Long idStudent = scan.nextLong();
 			System.out.print("Diem trung binh: ");
 			float diemTrungBinh = scan.nextFloat();
 			String hocLuc = sd_service.xepHocLuc(diemTrungBinh);
@@ -75,11 +70,9 @@ public class MainController {
 	public void cllerDeleteStudent() {
 		System.out.println("===================== Hay nhap loi dung duoi day =====================");
 		System.out.print("Nhap ten lop muon then hoc sinh: ");
-		scan.nextLine();
 		String tenLop = scan.nextLine();
 		System.out.print("ID: ");
 		Long idStudent = scan.nextLong();
-		System.out.println(tenLop +">>>>>"+idStudent);
 		boolean check = lcr_service.deleteStudent(idStudent, tenLop);
 		if(check)
 			System.out.println("Delete success!");
@@ -99,9 +92,9 @@ public class MainController {
 	}
 	
 	public void cllerShowAllList() {
-		if(lcr_service.getListClassRoom().isEmpty())
+		if(lcr_service.getRepository().getListClassRoom().isEmpty())
 			System.err.println("Empty!");
 		else
-			lcr_service.showAllList();
+			lcr_service.getRepository().showAllList();
 	}
 }

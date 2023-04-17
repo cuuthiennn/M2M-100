@@ -26,6 +26,7 @@ public class Main {
 			System.out.println("4.Xoa lop.");
 			System.out.println("5.Danh sach sinh vien theo lop.");
 			System.out.println("6.Danh sach tong.");
+			System.out.println("0.Thoat.");
 			System.out.println("===================== END =====================");
 			System.out.print("Nhap lua chon: ");
 			key = scan.nextInt();

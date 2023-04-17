@@ -18,11 +18,9 @@ public class ClassRoom {
 		return listStudent;
 	}
 
-	public void printList(List<Student> listStudent) {
+	public void printList() {
 		for(Student x : listStudent) {
 			System.out.println(x.toString());
 		}
 	}
-	
-	
 }

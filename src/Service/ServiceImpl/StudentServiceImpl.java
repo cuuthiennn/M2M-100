@@ -1,6 +1,5 @@
 package Service.ServiceImpl;
 
-import Entity.Student;
 import Service.StudentService;
 
 public class StudentServiceImpl implements StudentService{
