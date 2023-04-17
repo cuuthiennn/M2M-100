@@ -7,7 +7,7 @@ import Entity.Student;
 import Repository.Repository;
 import Service.ClassRoomService;
 
-public class ClassRoomServiceImpl extends Repository implements ClassRoomService{
+public class ClassRoomServiceImpl implements ClassRoomService{
 	Repository repository;
 	
 	public ClassRoomServiceImpl() {
