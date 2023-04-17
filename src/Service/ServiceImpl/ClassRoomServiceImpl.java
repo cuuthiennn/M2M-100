@@ -17,7 +17,8 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public Repository getRepository() {
 		return repository;
 	}
-
+	
+	@Override
 	public boolean insertClassRoom(String tenLop) {
 		boolean check = findClassRoom(tenLop);
 		if (!check) {
@@ -26,7 +27,8 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		}
 		return false;
 	}
-
+	
+	@Override
 	public boolean deleteClassRoom(String tenLop) {
 		boolean check = findClassRoom(tenLop);
 		if (check) {
@@ -36,11 +38,13 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return false;
 	}
 
+	@Override
 	public void showClassRoomByName(String tenLop) {
 		System.out.println("===================== " + tenLop + " =====================");
 		repository.getListClassRoom().get(tenLop).printList();
 	}
 
+	@Override
 	public boolean findClassRoom(String tenLop) {
 		boolean result = false;
 		for (String key : repository.getListClassRoom().keySet()) {
@@ -51,6 +55,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return result;
 	}
 
+	@Override
 	public boolean findStudentById(Long idStudent) {
 		for (String key : repository.getListClassRoom().keySet()) {
 			List<Student> temp_list = repository.getListClassRoom().get(key).getListStudent();
@@ -63,6 +68,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return false;
 	}
 
+	@Override
 	public boolean insertStudentIntoClassRoom(Student newStu, String tenLop) {
 		boolean check = findClassRoom(tenLop);
 		boolean doubleCheck = findStudentById(newStu.getIdStudent());
@@ -82,6 +88,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return false;
 	}
 
+	@Override
 	public boolean deleteStudent(Long idStudent, String tenLop) {
 		boolean check = findClassRoom(tenLop);
 		boolean doubleCheck = findStudentById(idStudent);
